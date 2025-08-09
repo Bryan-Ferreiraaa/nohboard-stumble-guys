@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<title>NohBoard Web com Emotes Imgur</title>
+<style>
+  body {
+    background-color: #00FF00; /* verde chroma */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+  .keyboard {
+    display: inline-block;
+  }
+  .row {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-bottom: 10px;
+  }
+  .key {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border: 2px solid black;
+    border-radius: 8px;
+    font-size: 24px;
+    font-weight: bold;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    box-shadow: 0 0 5px #00000055;
+    cursor: default;
+    position: relative;
+  }
+  .key.space {
+    width: 200px;
+  }
+  .pressed {
+    background: black !important;
+    color: white !important;
+  }
+  .key img {
+    max-width: 40px;
+    max-height: 40px;
+    pointer-events: none;
+    user-select: none;
+  }
+</style>
+</head>
+<body>
+  <div class="keyboard">
+    <div class="row">
+      <div class="key" data-key="KeyQ">
+        <img src="https://i.imgur.com/vm2KuU4.png" alt="Q" />
+      </div>
+      <div class="key" data-key="KeyW">W</div>
+      <div class="key" data-key="KeyE">
+        <img src="https://i.imgur.com/OYC1zVQ.png" alt="E" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="key" data-key="KeyA">A</div>
+      <div class="key" data-key="KeyS">S</div>
+      <div class="key" data-key="KeyD">D</div>
+    </div>
+    <div class="row" style="justify-content: center;">
+      <div class="key space" data-key="Space">SPACE</div>
+    </div>
+  </div>
+
+<script>
+  window.addEventListener('keydown', (e) => {
+    const key = document.querySelector(`.key[data-key="${e.code}"]`);
+    if (key) {
+      key.classList.add('pressed');
+    }
+  });
+
+  window.addEventListener('keyup', (e) => {
+    const key = document.querySelector(`.key[data-key="${e.code}"]`);
+    if (key) {
+      key.classList.remove('pressed');
+    }
+  });
+</script>
+</body>
+</html>
